@@ -1,6 +1,11 @@
 package com.example.tictaktoeproject2
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "past_games")
 data class GameRecord(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val dateTime: String,
     val winner: String,
     val difficulty: String
