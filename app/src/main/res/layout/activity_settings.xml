@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <TextView
+            android:text="@string/settings"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Select Game Mode -->
+        <TextView
+            android:text="@string/select_game_mode"
+            android:textSize="18sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- RadioGroup for main game modes -->
+        <RadioGroup
+            android:id="@+id/modeGroup"
+            android:orientation="vertical"
+            android:layout_marginBottom="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbAI"
+                android:text="@string/play_vs_ai"
+                android:textColor="@color/textPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp" />
+
+            <!-- Difficulty Section (below "Play vs AI") -->
+            <LinearLayout
+                android:id="@+id/difficultySection"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="-8dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:text="@string/select_difficulty"
+                    android:textSize="18sp"
+                    android:textColor="@color/textSecondary"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioGroup
+                    android:id="@+id/difficultyGroup"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rbEasy"
+                        android:text="@string/easy"
+                        android:textColor="@color/textPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbMedium"
+                        android:text="@string/medium"
+                        android:textColor="@color/textPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbHard"
+                        android:text="@string/hard"
+                        android:textColor="@color/textPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <RadioButton
+                android:id="@+id/rbHumanLocal"
+                android:text="@string/play_with_human_same_device"
+                android:textColor="@color/textPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp" />
+
+            <RadioButton
+                android:id="@+id/rbHumanRemote"
+                android:text="@string/play_with_human_bluetooth_wi_fi"
+                android:textColor="@color/textPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp" />
+        </RadioGroup>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSaveSettings"
+            android:text="@string/save_settings"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

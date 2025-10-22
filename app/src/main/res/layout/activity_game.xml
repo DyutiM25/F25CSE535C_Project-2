@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/backgroundColor"
+    tools:context=".GameActivity">
+
+    <TextView
+        android:id="@+id/tvGameTitle"
+        android:text="@string/tic_tac_toe"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryDarkColor"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvTurnIndicator"
+        android:text="@string/your_turn_x"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryDarkColor"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="3"
+        android:layout_marginBottom="20dp">
+
+        <Button android:id="@+id/button00" style="@style/GameCell" android:contentDescription="@string/top_left_cell" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/button01" style="@style/GameCell" android:contentDescription="@string/top_center_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/button02" style="@style/GameCell" android:contentDescription="@string/top_right_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/button10" style="@style/GameCell" android:contentDescription="@string/center_left_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/button11" style="@style/GameCell" android:contentDescription="@string/center_top_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/button12" style="@style/GameCell" android:contentDescription="@string/center_right_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/button20" style="@style/GameCell" android:contentDescription="@string/bottom_left_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/button21" style="@style/GameCell" android:contentDescription="@string/bottom_center_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/button22" style="@style/GameCell" android:contentDescription="@string/bottom_right_cell" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </GridLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnReset"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/reset_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnPastGames"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/past_games"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvDifficulty"
+        android:text="@string/difficulty_easy"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/primaryDarkColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

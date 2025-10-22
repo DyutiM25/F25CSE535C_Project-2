@@ -1,13 +1,17 @@
 <resources>
     <!-- Brand colors -->
-    <color name="primaryColor">#1976D2</color>         <!-- Blue -->
-    <color name="primaryDarkColor">#0D47A1</color>     <!-- Dark Blue -->
-    <color name="accentColor">#FFC107</color>          <!-- Amber -->
-    <color name="backgroundColor">#FAFAFA</color>      <!-- Light background -->
-    <color name="buttonTextColor">#FFFFFF</color>      <!-- White text -->
+    <color name="primaryColor">#1565C0</color>        <!-- Blue -->
+    <color name="primaryDarkColor">#0D47A1</color>   <!-- Deep Blue -->
+    <color name="accentColor">#FFB300</color>        <!-- Amber -->
+    <color name="backgroundColor">#FAFAFA</color>    <!-- Light Gray -->
+    <color name="textPrimary">#212121</color>        <!-- Dark Gray -->
+    <color name="textSecondary">#424242</color>      <!-- Slightly lighter gray -->
+    <color name="buttonTextColor">#FFFFFF</color>
+
 
     <!-- Optional extras -->
     <color name="easyColor">#4CAF50</color>            <!-- Green -->
     <color name="mediumColor">#FFC107</color>          <!-- Yellow -->
     <color name="hardColor">#F44336</color>            <!-- Red -->
+
 </resources>

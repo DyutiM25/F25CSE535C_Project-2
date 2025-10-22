@@ -17,4 +17,5 @@
         <item name="android:backgroundTint">@color/primaryColor</item>
         <item name="android:textColor">@color/buttonTextColor</item>
     </style>
+
 </resources>
