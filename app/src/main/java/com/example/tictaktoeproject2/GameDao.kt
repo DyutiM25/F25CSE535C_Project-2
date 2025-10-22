@@ -6,9 +6,10 @@ import androidx.room.Query
 
 @Dao
 interface GameDao {
+    // Non-suspend insert returning the row id to avoid kapt / stub conversion issues.
     @Insert
-    suspend fun insertGame(game: GameRecord)
-    
+    fun insertGame(game: GameRecord): Long
+
     @Query("SELECT * FROM past_games ORDER BY id DESC")
-    suspend fun getAllGames(): List<GameRecord>
+    fun getAllGames(): List<GameRecord>
 }

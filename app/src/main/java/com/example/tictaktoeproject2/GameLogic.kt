@@ -113,8 +113,13 @@ fun minimax(board: Array<Player?>, depth: Int, isMaximizing: Boolean, alpha: Int
     }
 }
 
-// Medium difficulty
+// Medium difficulty (50% random, 50% optimal)
 fun getMediumMove(board: Array<Player?>): Int {
-    //Implement medium difficulty logic
+    // 50% chance random, 50% chance optimal
+    return if (Random.nextBoolean()) {
+        getRandomMove(board) // Easy move
+    } else {
+        getBestMove(board)   // Hard move
+    }
 }
 
