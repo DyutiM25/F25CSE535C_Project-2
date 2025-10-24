@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tictaktoeproject2.ui.theme.TicTakToeProject2Theme
+import org.json.JSONObject
 import java.io.IOException
 import java.util.UUID
 
@@ -55,16 +56,30 @@ class MainActivity : ComponentActivity() {
                     connectedThread = service.ConnectedThread(socket)
                     connectedThread?.start()
 
-                    // Example: Send a simple string after connection
-                    val message = "Hello from Android!"
-                    connectedThread?.write(message.toByteArray())
-                    Log.d(TAG, "Sent: $message")
-
                 } catch (e: IOException) {
                     Log.e(TAG, "Connection failed", e)
                 }
             }.start()
         }
+        //example send code tied to a button
+/*
+        sendButton.setOnClickListener {
+            val text = inputMessage.text.toString()
+
+            // Make JSON Object
+            val json = JSONObject().apply {
+                put("data", text)
+            }
+
+            val jsonString = json.toString()
+            if (connectedThread != null) {
+                connectedThread?.write(jsonString.toByteArray(Charsets.UTF_8))
+                Log.d(TAG, "Sent $jsonString")
+            } else {
+                Log.w(TAG, "Not connected")
+            }
+        }
+ */
 
         enableEdgeToEdge()
         setContent {
