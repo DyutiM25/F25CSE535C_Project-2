@@ -1,9 +1,19 @@
 package com.example.tictaktoeproject2
 
+import android.Manifest
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothSocket
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresPermission
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -12,10 +22,50 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tictaktoeproject2.ui.theme.TicTakToeProject2Theme
+import java.io.IOException
+import java.util.UUID
+
+private const val TAG = "MY_TICTAKTOE_APP"
+//randomly generated static UUID
+private val MY_UUID: UUID = UUID.fromString("02119a91-0c55-4238-a552-0756e76a6bfc")
 
 class MainActivity : ComponentActivity() {
+    private var bluetoothAdapter: BluetoothAdapter? = null
+    private var connectedThread: BluetoothService.ConnectedThread? = null
+
+
+    @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val bluetoothManager = getSystemService(BluetoothManager::class.java)
+        bluetoothAdapter = bluetoothManager.adapter
+
+        val device: BluetoothDevice? = bluetoothAdapter?.bondedDevices?.firstOrNull()
+        if(device != null) {
+            Thread {
+                try {
+                    val socket: BluetoothSocket =
+                        device.createRfcommSocketToServiceRecord(MY_UUID)
+
+                    socket.connect()
+
+                    // Once connected, start the communication thread
+                    val service = BluetoothService(handler)
+                    connectedThread = service.ConnectedThread(socket)
+                    connectedThread?.start()
+
+                    // Example: Send a simple string after connection
+                    val message = "Hello from Android!"
+                    connectedThread?.write(message.toByteArray())
+                    Log.d(TAG, "Sent: $message")
+
+                } catch (e: IOException) {
+                    Log.e(TAG, "Connection failed", e)
+                }
+            }.start()
+        }
+
         enableEdgeToEdge()
         setContent {
             TicTakToeProject2Theme {
@@ -24,6 +74,27 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
+                }
+            }
+        }
+    }
+
+    private val handler = object : Handler(Looper.getMainLooper()) {
+        override fun handleMessage(msg: Message) {
+            when (msg.what) {
+                MESSAGE_READ -> {
+                    val readBuf = msg.obj as ByteArray
+                    val readMessage = String(readBuf, 0, msg.arg1)
+                    Log.d(TAG, "Received: $readMessage")
+
+                    // Handle received data
+                    // JSON.decode(readMessage)
+                    // check turn flag
+                    // update board
+                }
+
+                MESSAGE_WRITE -> {
+                    Log.d(TAG, "Message sent to device.")
                 }
             }
         }
